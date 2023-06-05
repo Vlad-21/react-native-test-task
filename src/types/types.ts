@@ -1,7 +1,8 @@
 import { IFilm } from './film.types';
 
 type RootStackParamList = {
-    Details: { item: IFilm } | undefined;
+    Home: undefined
+    Details: { item: IFilm };
 };
 
 export { RootStackParamList };

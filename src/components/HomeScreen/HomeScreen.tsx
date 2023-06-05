@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import {
-    Button,
     Text,
     View,
-    StyleSheet,
     FlatList,
-    Touchable,
     TouchableOpacity,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+
 import SearchComponent from '../SearchComponent/SearchComponent';
 import FilmItem from '../FilmItem/FilmItem';
+
 import { IFilm } from '../../types/film.types';
-import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../types/types';
+
+import {styles} from "./HomeScreen.style";
 
 const HomeScreen: React.FC = () => {
     const [filmsList, setFilmsList] = useState<Array<IFilm>>();
-    const handleGetSeacrResult = (list: Array<IFilm>) => {
+    const handleGetSearchResult = (list: Array<IFilm>) => {
         setFilmsList(list);
     };
 
@@ -29,7 +30,7 @@ const HomeScreen: React.FC = () => {
     };
     return (
         <View style={styles.container}>
-            <SearchComponent setFilms={handleGetSeacrResult} />
+            <SearchComponent setFilms={handleGetSearchResult} />
             {filmsList?.length ? (
                 <FlatList
                     showsVerticalScrollIndicator={false}
@@ -54,29 +55,5 @@ const HomeScreen: React.FC = () => {
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        width: '100%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    flatList: {
-        width: '95%',
-        marginTop: 20,
-        marginBottom: 45,
-    },
-    textContainer: {
-        width: '100%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 50,
-    },
-    text: {
-        fontSize: 20,
-    },
-});
 
 export default HomeScreen;

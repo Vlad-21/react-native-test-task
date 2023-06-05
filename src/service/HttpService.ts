@@ -1,6 +1,6 @@
 import { IFilm } from '../types/film.types';
 
-const getFilsList = async (filmName: string): Promise<Array<IFilm>> => {
+const getFilmsList = async (filmName: string): Promise<Array<IFilm>> => {
     const result = await fetch(
         `https://api.tvmaze.com/search/shows?q=${filmName}`
     );
@@ -8,4 +8,4 @@ const getFilsList = async (filmName: string): Promise<Array<IFilm>> => {
     return data;
 };
 
-export { getFilsList };
+export { getFilmsList };
